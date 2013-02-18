@@ -1,7 +1,105 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+[User, Book, Author].each { |model| model.destroy_all }
+
+user_1 = User.create(name: 'Bruno', email: 'bruno@gmail.com', password: '12345678')
+user_2 = User.create(name: 'Joao', email: 'joao@gmail.com', password: '12345678')
+user_3 = User.create(name: 'Maria', email: 'maria@gmail.com', password: '12345678')
+user_4 = User.create(name: 'Carolina', email: 'carolina@gmail.com', password: '12345678')
+
+
+book_1 = Book.create(isbn: '1934356549',
+                     title: 'Agile Web Development with Rails',
+                     edition: 'Fourth Edition',
+                     pages: 488)
+
+book_2 = Book.create(isbn: '0321832051',
+                     title: 'Ruby on Rails Tutorial: Learn Web Development with Rails',
+                     edition: 'Second Edition',
+                     pages: 640)
+
+book_3 = Book.create(isbn: '0321601661',
+                     title: 'The Rails 3 Way',
+                     edition: 'Second Edition',
+                     pages: 768)
+
+book_4 = Book.create(isbn: '1934356085',
+                     title: 'Programming Ruby 1.9: The Pragmatic Programmers` Guide',
+                     edition: 'Third Edition',
+                     pages: 864)
+
+book_5 = Book.create(isbn: '0596805527',
+                     title: 'JavaScript: The Definitive Guide',
+                     edition: 'Sixth Edition',
+                     pages: 1100)
+
+book_6 = Book.create(isbn: '0596517742',
+                     title: 'JavaScript: The Good Parts',
+                     edition: 'First Edition',
+                     pages: 176)
+
+book_7 = Book.create(isbn: '0596806752',
+                     title: 'JavaScript Patterns',
+                     edition: 'First Edition',
+                     pages: 236)
+
+book_8 = Book.create(isbn: '1593272820',
+                     title: 'Eloquent JavaScript: A Modern Introduction to Programming',
+                     edition: 'First Edition',
+                     pages: 224)
+
+book_9 = Book.create(isbn: '1449331815',
+                     title: 'Learning JavaScript Design Patterns',
+                     edition: 'First Edition',
+                     pages:254)
+
+book_10 = Book.create(isbn: '144930351X',
+                      title: 'JavaScript Web Applications',
+                      edition: 'First Edition',
+                      pages: 282)
+
+book_11 = Book.create(isbn: '1449321054',
+                      title: 'The Little Book on CoffeeScript',
+                      edition: 'First Edition',
+                      pages: 64)
+
+book_12 = Book.create(isbn: '1449398588',
+                      title: 'Node: Up and Running: Scalable Server-Side Code with JavaScript',
+                      edition: 'First Edition',
+                      pages: 204)
+
+book_13 = Book.create(isbn: '1449323073',
+                      title: 'Learning Node',
+                      edition: 'First Edition',
+                      pages: 396)
+
+Author.create([
+  { name: 'Sam Ruby', book_id: book_1.id },
+  { name: 'Dave Thomas', book_id: book_1.id },
+  { name: 'David Heinemeier Hansson', book_id: book_1.id },
+
+  { name: 'Michael Hartl ', book_id: book_2.id },
+
+  { name: 'Obie Fernandez', book_id: book_3.id },
+
+  { name: 'Dave Thomas', book_id: book_4.id },
+  { name: 'Andrew Hunt', book_id: book_4.id },
+  { name: 'Chad Fowler', book_id: book_4.id },
+
+  { name: 'David Flanagan', book_id: book_5.id },
+
+  { name: 'Douglas Crockford', book_id: book_6.id },
+
+  { name: 'Stoyan Stefanov', book_id: book_7.id },
+
+  { name: 'Marijn Haverbeke', book_id: book_8.id },
+
+  { name: 'Addy Osmani', book_id: book_9.id },
+
+  { name: 'Alex MacCaw', book_id: book_10.id },
+
+  { name: 'Alex MacCaw', book_id: book_11.id },
+
+  { name: 'Tom Hughes-Croucher', book_id: book_12.id },
+  { name: 'Mike Wilson', book_id: book_12.id },
+
+  { name: 'Shelley Powers', book_id: book_13.id }
+])
