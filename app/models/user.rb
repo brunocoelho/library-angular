@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email, :name
 
-  attr_accessible :email, :name, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :name, :password, :password_confirmation
 end

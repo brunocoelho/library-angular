@@ -13,5 +13,8 @@ end
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.12.2'
-  gem 'shoulda',     '~> 3.3.2'
+end
+
+group :test do
+  gem 'shoulda', '~> 3.3.2'
 end
