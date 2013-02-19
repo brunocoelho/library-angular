@@ -1,14 +1,18 @@
 <h2>Please login</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div>
-    <%= f.label :email %><br/>
-    <%= f.email_field :email, autofocus: true, placeholder: 'bruno@gmail.com' %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f| %>
+  <div class="control-group">
+    <%= f.label :email, class: 'control-label' %>
+    <div class="controls">
+      <%= f.email_field :email, autofocus: true, placeholder: 'bruno@gmail.com' %>
+    </div>
   </div>
 
-  <div>
-    <%= f.label :password %><br/>
-    <%= f.password_field :password, placeholder: '12345678' %>
+  <div class="control-group">
+    <%= f.label :password, class: 'control-label' %>
+    <div class="controls">
+      <%= f.password_field :password, placeholder: '12345678' %>
+    </div>
   </div>
 
   <div><%= f.submit 'Sign in', class: 'btn btn-primary' %></div>

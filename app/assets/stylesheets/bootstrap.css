@@ -1937,7 +1937,7 @@ legend + .control-group {
 
 .form-horizontal .control-label {
   float: left;
-  width: 160px;
+  width: 0px;
   padding-top: 5px;
   text-align: right;
 }
@@ -1945,7 +1945,7 @@ legend + .control-group {
 .form-horizontal .controls {
   *display: inline-block;
   *padding-left: 20px;
-  margin-left: 180px;
+  margin-left: 85px;
   *margin-left: 0;
 }
 

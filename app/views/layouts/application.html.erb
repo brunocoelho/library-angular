@@ -1,25 +1,35 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Library</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <title>Library</title>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<div class="span1">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span2">
+          <!--Sidebar content-->
+        </div>
+
+        <div class="span9">
+          <!--Body content-->
+          <div class="login" style="margin: auto; width: 40%;">
+              <%= yield %>
+          </div>
+        </div>
+
+        <div class="span1">
+          <!--Logout content-->
           <% if user_signed_in? %>
             <%= link_to 'Logout', destroy_user_session_path, class: 'logout',
               method: :delete, title: 'Fazer logout', :'data-placement' => "below" %>
-          <% else %>
-            <%= link_to 'Login', new_user_session_path %>
           <% end %>
-
         </div>
+      </div>
+    </div>
 
-
-<%= yield %>
-
-</body>
+  </body>
 </html>
