@@ -9,67 +9,80 @@ user_4 = User.create(name: 'Carolina', email: 'carolina@gmail.com', password: '1
 book_1 = Book.create(isbn: '1934356549',
                      title: 'Agile Web Development with Rails',
                      edition: 'Fourth Edition',
-                     pages: 488)
+                     pages: 488,
+                     image_url: 'assets/books/book_1.jpg')
 
 book_2 = Book.create(isbn: '0321832051',
                      title: 'Ruby on Rails Tutorial: Learn Web Development with Rails',
                      edition: 'Second Edition',
-                     pages: 640)
+                     pages: 640,
+                     image_url: 'assets/books/book_2.jpg')
 
 book_3 = Book.create(isbn: '0321601661',
                      title: 'The Rails 3 Way',
                      edition: 'Second Edition',
-                     pages: 768)
+                     pages: 768,
+                     image_url: 'assets/books/book_3.jpg')
 
 book_4 = Book.create(isbn: '1934356085',
                      title: 'Programming Ruby 1.9: The Pragmatic Programmers` Guide',
                      edition: 'Third Edition',
-                     pages: 864)
+                     pages: 864,
+                     image_url: 'assets/books/book_4.jpg')
 
 book_5 = Book.create(isbn: '0596805527',
                      title: 'JavaScript: The Definitive Guide',
                      edition: 'Sixth Edition',
-                     pages: 1100)
+                     pages: 1100,
+                     image_url: 'assets/books/book_5.jpg')
 
 book_6 = Book.create(isbn: '0596517742',
                      title: 'JavaScript: The Good Parts',
                      edition: 'First Edition',
-                     pages: 176)
+                     pages: 176,
+                     image_url: 'assets/books/book_6.jpg')
 
 book_7 = Book.create(isbn: '0596806752',
                      title: 'JavaScript Patterns',
                      edition: 'First Edition',
-                     pages: 236)
+                     pages: 236,
+                     image_url: 'assets/books/book_7.jpg')
 
 book_8 = Book.create(isbn: '1593272820',
                      title: 'Eloquent JavaScript: A Modern Introduction to Programming',
                      edition: 'First Edition',
-                     pages: 224)
+                     pages: 224,
+                     image_url: 'assets/books/book_8.jpg')
 
 book_9 = Book.create(isbn: '1449331815',
                      title: 'Learning JavaScript Design Patterns',
                      edition: 'First Edition',
-                     pages:254)
+                     pages:254,
+                     image_url: 'assets/books/book_9.jpg')
 
 book_10 = Book.create(isbn: '144930351X',
                       title: 'JavaScript Web Applications',
                       edition: 'First Edition',
-                      pages: 282)
+                      pages: 282,
+                      image_url: 'assets/books/book_10.jpg')
 
 book_11 = Book.create(isbn: '1449321054',
                       title: 'The Little Book on CoffeeScript',
                       edition: 'First Edition',
-                      pages: 64)
+                      pages: 64,
+                      image_url: 'assets/books/book_11.jpg')
 
 book_12 = Book.create(isbn: '1449398588',
                       title: 'Node: Up and Running: Scalable Server-Side Code with JavaScript',
                       edition: 'First Edition',
-                      pages: 204)
+                      pages: 204,
+                      image_url: 'assets/books/book_12.jpg')
 
 book_13 = Book.create(isbn: '1449323073',
                       title: 'Learning Node',
                       edition: 'First Edition',
-                      pages: 396)
+                      pages: 396,
+                      image_url: 'assets/books/book_13.jpg')
 
 Author.create([
   { name: 'Sam Ruby', book_id: book_1.id },

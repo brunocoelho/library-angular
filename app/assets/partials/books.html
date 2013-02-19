@@ -1,1 +1,15 @@
 {{teste}}
+
+
+<ul>
+    <li ng-repeat="book in books">
+        {{book.title}}
+        <img ng-src="{{book.image_url}}">
+    </li>
+</ul>
+
+<ul>
+    <li ng-repeat="author in authors">
+        {{author.name}}
+    </li>
+</ul>

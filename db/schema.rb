@@ -23,14 +23,15 @@ ActiveRecord::Schema.define(:version => 20130218153236) do
   add_index "authors", ["book_id"], :name => "index_authors_on_book_id"
 
   create_table "books", :force => true do |t|
-    t.string   "title",        :limit => 80, :null => false
-    t.string   "isbn",         :limit => 20, :null => false
-    t.string   "edition",      :limit => 30, :null => false
-    t.integer  "pages",                      :null => false
+    t.string   "title",        :limit => 80,  :null => false
+    t.string   "isbn",         :limit => 20,  :null => false
+    t.string   "edition",      :limit => 30,  :null => false
+    t.integer  "pages",                       :null => false
     t.date     "lending_date"
     t.integer  "user_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.string   "image_url",    :limit => 100, :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   add_index "books", ["user_id"], :name => "index_books_on_user_id"
