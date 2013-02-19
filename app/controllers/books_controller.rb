@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  respond_to :json
+  respond_to :html, :json
   before_filter :find_book, except: [:index, :create, :edit, :dashboard]
 
   def dashboard; end
