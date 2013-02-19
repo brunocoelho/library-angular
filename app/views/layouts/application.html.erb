@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="LibraryApp">
   <head>
     <title>Library</title>
     <%= stylesheet_link_tag "application", media: "all" %>
@@ -10,14 +10,18 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span2">
+        <div class="span2" >
           <!--Sidebar content-->
+          {{1+2}}
         </div>
 
         <div class="span9">
           <!--Body content-->
           <div class="login" style="margin: auto; width: 40%;">
-              <%= yield %>
+            <%= yield %>
+            <% if user_signed_in? %>
+              <div ng-view></div>
+            <% end %>
           </div>
         </div>
 
