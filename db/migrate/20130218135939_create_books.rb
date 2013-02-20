@@ -5,7 +5,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string  :isbn,      null: false, limit: 20
       t.string  :edition,   null: false, limit: 30
       t.integer :pages,     null: false
-      t.date    :lending_date
+      t.string  :lending_date
       t.integer :user_id
       t.string  :image_url, null: false, limit: 100
 

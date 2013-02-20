@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20130218153236) do
     t.string   "isbn",         :limit => 20,  :null => false
     t.string   "edition",      :limit => 30,  :null => false
     t.integer  "pages",                       :null => false
-    t.date     "lending_date"
+    t.string   "lending_date"
     t.integer  "user_id"
     t.string   "image_url",    :limit => 100, :null => false
     t.datetime "created_at",                  :null => false

@@ -1,7 +1,13 @@
 ## Controllers
 
-@ApplicationCtrl = ['$scope', 'User', ($scope, User) ->
+@ApplicationCtrl = ['$scope', '$log', 'User', ($scope, $log, User) ->
   $scope.current_user = User.user()
+
+  $scope.formatDate = (date) ->
+    daysToReturn = 7
+    newDate = new Date(date).getTime()
+    formatedDate = new Date(daysToReturn * 24 * 60 * 60 * 1000 + newDate)
+    formatedDate = "#{formatedDate.getDate()}/#{formatedDate.getMonth() + 1}/#{formatedDate.getFullYear()}"
 ]
 
 @BookCtrl = ['$scope', '$log', 'Book', ($scope, $log, Book) ->
@@ -13,6 +19,7 @@
     if answer
       book = getBook(book_id)
       book.user_id = $scope.current_user.id
+      book.lending_date = new Date().toLocaleString()
       # OPTIMIZE: Take a look at BookService to use defaul param '@id'
       book.$update({ id: book_id })
 
@@ -22,6 +29,7 @@
     if answer
       book = getBook(book_id)
       book.user_id = null
+      book.lending_date = null
       # OPTIMIZE: Take a look at BookService to use defaul param '@id'
       book.$update({ id: book_id })
 
