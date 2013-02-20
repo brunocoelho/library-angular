@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   respond_to :html, :json
-  before_filter :find_book, except: [:index, :create, :edit, :dashboard]
+  before_filter :find_book, except: [:index, :create, :dashboard]
 
   def dashboard; end
 
@@ -19,7 +19,7 @@ class BooksController < ApplicationController
     render json: { created: created }
   end
 
-  def edit
+  def update
     @book.update_attributes(params[:book])
     respond_with @book
   end

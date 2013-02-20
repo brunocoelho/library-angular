@@ -13,22 +13,18 @@
         <div class="span2" >
           <!--Sidebar content-->
 
-          <form class="form-search">
-            <input type="text" class="input-medium search-query" placeholder="Search">
-            <!--<button type="submit" class="btn">Search</button>-->
-          </form>
-
-          <p>Current User #INICIO<p>
-          {{current_user.id}}
-          {{current_user.name}}
-          {{current_user.email}}
-          <p>Current User #FIM<p>
+          <% if user_signed_in? %>
+            <form class="form-search">
+              <input type="text" class="input-medium search-query" placeholder="Buscar">
+              <!--<button type="submit" class="btn">Search</button>-->
+            </form>
+          <% end %>
 
         </div>
 
         <div class="span9">
           <!--Body content-->
-          <div class="login" style="margin: auto; width: 40%;">
+          <div class="login">
             <%= yield %>
           </div>
           <% if user_signed_in? %>
@@ -36,10 +32,10 @@
           <% end %>
         </div>
 
-        <div class="span1">
+        <div class="span1 logout">
           <!--Logout content-->
           <% if user_signed_in? %>
-            <%= link_to 'Logout', destroy_user_session_path, class: 'logout',
+            <%= link_to 'Sair', destroy_user_session_path,
               method: :delete, title: 'Fazer logout', :'data-placement' => "below" %>
           <% end %>
         </div>

@@ -86,7 +86,6 @@ book_13 = Book.create(isbn: '1449323073',
 
 Author.create([
   { name: 'Sam Ruby', book_id: book_1.id },
-  { name: 'Dave Thomas', book_id: book_1.id },
   { name: 'David Heinemeier Hansson', book_id: book_1.id },
 
   { name: 'Michael Hartl ', book_id: book_2.id },
@@ -94,7 +93,6 @@ Author.create([
   { name: 'Obie Fernandez', book_id: book_3.id },
 
   { name: 'Dave Thomas', book_id: book_4.id },
-  { name: 'Andrew Hunt', book_id: book_4.id },
   { name: 'Chad Fowler', book_id: book_4.id },
 
   { name: 'David Flanagan', book_id: book_5.id },

@@ -1,9 +1,8 @@
 <ul class="thumbnails">
-  <li class="span4 product-card" ng-repeat="book in books">
+  <li class="span4 product-card" style="width: 275px;margin: 0 20px 10px 0;" ng-repeat="book in books">
     <div class="thumbnail">
       <img class="img-book" ng-src={{book.image_url}} alt="book image">
 
-      {{appCtrl}}
       <dl class="book-details">
         <dt>Title:</dt>
         <dd>{{book.title}}</dd>
@@ -21,8 +20,8 @@
       </dl>
 
       <p class="book-actions">
-        <a href="#" class="btn btn-primary" ng-hide="book.user_id" ng-click="borrow()">Pegar emprestado</a>
-        <a href="#" class="btn" ng-click="return()">Devolver</a>
+        <button class="btn btn-primary"  ng-hide="book.user_id" ng-click="borrow(book.id, book.title)">Pegar emprestado</button>
+        <button class="btn" ng-show="book.user_id == current_user.id" ng-click="return(book.id, book.title)">Devolver</button>
       </p>
     </div>
   </li>
