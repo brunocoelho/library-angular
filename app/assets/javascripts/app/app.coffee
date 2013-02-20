@@ -1,6 +1,6 @@
 ## App
 
-angular.module('LibraryApp', ['BookService', 'AuthorService'])
+angular.module('LibraryApp', ['BookService'])
   .config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
     $locationProvider.html5Mode(true).hashPrefix('!') # Deleting hashbang symbol '#' from url.
     $routeProvider
