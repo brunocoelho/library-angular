@@ -12,3 +12,7 @@
  *= require bootstrap
  *= require_tree .
  */
+
+.form-search {
+  margin: 35px 0 0 0;
+}

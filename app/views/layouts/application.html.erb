@@ -8,21 +8,26 @@
   </head>
   <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="topbar">
       <div class="row-fluid">
         <div class="span2" >
           <!--Sidebar content-->
-          {{1+2}}
+
+          <form class="form-search">
+            <input type="text" class="input-medium search-query" placeholder="Search">
+            <!--<button type="submit" class="btn">Search</button>-->
+          </form>
+
         </div>
 
         <div class="span9">
           <!--Body content-->
           <div class="login" style="margin: auto; width: 40%;">
             <%= yield %>
-            <% if user_signed_in? %>
-              <div ng-view></div>
-            <% end %>
           </div>
+          <% if user_signed_in? %>
+            <div ng-view></div>
+          <% end %>
         </div>
 
         <div class="span1">
