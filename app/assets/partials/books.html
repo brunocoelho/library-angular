@@ -1,15 +1,28 @@
-{{teste}}
+<ul class="thumbnails">
+  <li class="span4 product-card" ng-repeat="book in books">
+    <div class="thumbnail">
+      <img class="img-book" ng-src={{book.image_url}} alt="book image">
 
+      <dl class="book-details">
+        <dt>Title:</dt>
+        <dd>{{book.title}}</dd>
 
-<ul>
-    <li ng-repeat="book in books">
-        {{book.title}}
-        <img ng-src="{{book.image_url}}">
-    </li>
-</ul>
+        <dt>Edition:</dt>
+        <dd>{{book.edition}}</dd>
 
-<ul>
-    <li ng-repeat="author in authors">
-        {{author.name}}
-    </li>
+        <dt>Pages:</dt>
+        <dd>{{book.pages}}</dd>
+
+        <dt>Authors:</dt >
+        <dd ng-repeat="author in book.authors">
+          {{author.name}}
+        </dd>
+      </dl>
+
+      <p class="book-actions">
+        <a href="#" class="btn btn-primary" ng-hide="book.user_id" ng-click="borrow()">Pegar emprestado</a>
+        <a href="#" class="btn" ng-click="return()">Devolver</a>
+      </p>
+    </div>
+  </li>
 </ul>

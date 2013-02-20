@@ -7,4 +7,9 @@ json.array!(@books) do |json, book|
   json.lending_date book.lending_date
   json.user_id      book.user_id
   json.image_url    book.image_url
+
+  json.authors book.authors do |json, author|
+    json.id   author.id
+    json.name author.name
+  end
 end
