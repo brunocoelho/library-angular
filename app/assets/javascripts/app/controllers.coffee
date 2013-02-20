@@ -1,10 +1,13 @@
 ## Controllers
 
-@AplicationCtrl = ['$scope', '$log', 'Book', ($scope, $log, Book) ->
-    $scope.books = Book.query()
+@ApplicationCtrl = ['$scope', 'User', ($scope, User) ->
+  $scope.current_user = User.user()
+]
 
-    $scope.borrow = ->
+@BookCtrl = ['$scope', 'Book', ($scope, Book) ->
+  $scope.books = Book.query()
 
-    $scope.return = ->
+  $scope.borrow = ->
 
+  $scope.return = ->
 ]

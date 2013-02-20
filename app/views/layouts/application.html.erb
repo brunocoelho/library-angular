@@ -9,7 +9,7 @@
   <body>
 
     <div class="container-fluid" id="topbar">
-      <div class="row-fluid">
+      <div class="row-fluid" ng-controller="ApplicationCtrl">
         <div class="span2" >
           <!--Sidebar content-->
 
@@ -17,6 +17,12 @@
             <input type="text" class="input-medium search-query" placeholder="Search">
             <!--<button type="submit" class="btn">Search</button>-->
           </form>
+
+          <p>Current User #INICIO<p>
+          {{current_user.id}}
+          {{current_user.name}}
+          {{current_user.email}}
+          <p>Current User #FIM<p>
 
         </div>
 

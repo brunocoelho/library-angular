@@ -4,4 +4,6 @@ Library::Application.routes.draw do
   root to: 'books#index'
 
   resources :books
+
+  match 'user', to: 'users#user'
 end
