@@ -1,5 +1,5 @@
 <ul class="thumbnails">
-  <li class="span4 product-card" style="width: 276px; margin: 0 15px 15px 0;" ng-repeat="book in books">
+  <li class="span4 product-card" style="width: 276px; margin: 0 15px 15px 0;" ng-repeat="book in books | filter:query">
     <div class="thumbnail">
       <img class="img-book" ng-src={{book.image_url}} alt="book image">
 
@@ -20,18 +20,18 @@
 
         <dt>Status:</dt>
         <dd ng-show="book.user_id == null">Disponível</dd>
-        <dd ng-show="book.user_id && book.user_id != current_user.id">
+        <dd ng-show="book.user_id && book.user_id != currentUser.id">
           Disponível em {{formatDate(book.lending_date)}}
         </dd>
-        <dd ng-show="book.user_id && book.user_id == current_user.id">
+        <dd ng-show="book.user_id && book.user_id == currentUser.id">
           Retorne o livro em {{formatDate(book.lending_date)}}
         </dd>
 
       </dl>
 
       <p class="book-actions">
-        <button class="btn btn-primary"  ng-hide="book.user_id" ng-click="borrow(book.id, book.title)">Pegar emprestado</button>
-        <button class="btn" ng-show="book.user_id == current_user.id" ng-click="return(book.id, book.title)">Devolver</button>
+        <button class="btn btn-primary" ng-hide="book.user_id" ng-click="borrow(book.id, $index)">Pegar emprestado</button>
+        <button class="btn" ng-show="book.user_id == currentUser.id" ng-click="return(book.id, book.title, $index)">Devolver</button>
       </p>
     </div>
   </li>
