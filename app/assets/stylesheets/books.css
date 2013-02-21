@@ -1,5 +1,10 @@
+.container-details {
+  min-height: 240px;
+}
+
 .book-details, .book-actions {
-  margin-left: 28px;
+  margin-left: 15px;
+  width: 232px;
 }
 
 .product-card {
@@ -25,5 +30,5 @@
 }
 
 .thumbnail {
-  min-height: 620px;
+  min-height: 600px;
 }

@@ -3,6 +3,7 @@
     <div class="thumbnail">
       <img class="img-book" ng-src={{book.image_url}} alt="book image">
 
+      <div class="container-details">
       <dl class="book-details">
         <dt>Título:</dt>
         <dd>{{book.title}}</dd>
@@ -28,6 +29,7 @@
         </dd>
 
       </dl>
+      </div>
 
       <p class="book-actions">
         <button class="btn btn-primary" ng-hide="book.user_id" ng-click="borrow(book.id, $index)">Pegar emprestado</button>
