@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_filter :find_book, except: [:index, :create, :dashboard]
 
   def index
-    @books = Book.all
+    @books = Book.order('created_at ASC')
     respond_with @books
   end
 
