@@ -11,7 +11,7 @@
     <div class="container-fluid" id="topbar">
       <div class="row-fluid" ng-controller="ApplicationCtrl">
         <div class="span2" >
-          <!--Sidebar content-->
+          <!--Search content-->
 
           <% if user_signed_in? %>
             <form class="form-search">
@@ -23,16 +23,24 @@
 
         <div class="span9">
           <!--Body content-->
+
           <div class="login">
             <%= yield %>
           </div>
+
           <% if user_signed_in? %>
+            <div ng-show="currentUser.is_admin" class="alert admin-alert">
+              <button type="button" class="close" data-dismiss="alert">&times;</button>
+              <strong>Você está logado como funcionário!</strong> Duplo clique na imagem para editar.
+            </div>
+
             <div ng-view></div>
           <% end %>
         </div>
 
         <div class="span1 logout">
           <!--Logout content-->
+
           <% if user_signed_in? %>
             <%= link_to 'Sair', destroy_user_session_path,
               method: :delete, title: 'Fazer logout', :'data-placement' => "below" %>

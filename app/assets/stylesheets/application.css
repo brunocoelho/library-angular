@@ -21,3 +21,8 @@
   margin: auto;
   width: 40%;
 }
+
+.admin-alert {
+  width: 808px;
+  margin: 10px 0 0 8px;
+}

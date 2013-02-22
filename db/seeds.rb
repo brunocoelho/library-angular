@@ -1,9 +1,15 @@
+# encoding: utf-8
+
 [User, Book, Author].each { |model| model.destroy_all }
 
 user_1 = User.create(name: 'Bruno', email: 'bruno@gmail.com', password: '12345678')
 user_2 = User.create(name: 'Joao', email: 'joao@gmail.com', password: '12345678')
 user_3 = User.create(name: 'Maria', email: 'maria@gmail.com', password: '12345678')
 user_4 = User.create(name: 'Carolina', email: 'carolina@gmail.com', password: '12345678')
+user_5 = User.create(name: 'Antonio Funcionário', email: 'antonio@gmail.com',
+                     password: '12345678', is_admin: true)
+user_6 = User.create(name: 'Carlos Funcionário', email: 'carlos@gmail.com',
+                     password: '12345678', is_admin: true)
 
 book_1 = Book.create(isbn: '0596805527',
                      title: 'JavaScript: The Definitive Guide',

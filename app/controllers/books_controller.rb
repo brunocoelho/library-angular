@@ -2,8 +2,6 @@ class BooksController < ApplicationController
   respond_to :html, :json
   before_filter :find_book, except: [:index, :create, :dashboard]
 
-  def dashboard; end
-
   def index
     @books = Book.all
     respond_with @books
@@ -17,6 +15,10 @@ class BooksController < ApplicationController
     @book = Book.create(params[:book])
     created = @book ? 'true' : 'false'
     render json: { created: created }
+  end
+
+  def edit
+    respond_with @book
   end
 
   def update

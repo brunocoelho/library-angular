@@ -32,3 +32,12 @@
 .thumbnail {
   min-height: 614px;
 }
+
+.edit-book-input {
+  margin: 0 0 10px 0;
+}
+
+.edit-book {
+  margin-left: 10px;
+  list-style: none;
+}

@@ -2,9 +2,11 @@
 
 angular.module('BookService', ['ngResource'])
   .factory 'Book', ['$resource', ($resource) ->
-    $resource('books/:id', { id: '@id' },
-      'update': { method: 'PUT' },
-      'index': { method: 'GET', isArray: true }
+    $resource('books/:id', {},
+      {
+       'update': { method: 'PUT' },
+       'index': { method: 'GET', isArray: true }
+      }
     )
   ]
 

@@ -1,6 +1,6 @@
 <ul class="thumbnails">
   <li class="span4 product-card" style="width: 276px; margin: 0 15px 15px 0;" ng-repeat="book in books | filter:query">
-    <div class="thumbnail">
+    <div ng-dblclick="editBook(book)" class="thumbnail">
       <img class="img-book" ng-src={{book.image_url}} alt="book image">
 
       <div class="container-details">

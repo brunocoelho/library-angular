@@ -1,0 +1,25 @@
+<form class="form-horizontal" ng-submit="editBook(book)">
+  <ul class="edit-book">
+
+    <img ng-src={{book.image_url}}">
+
+    <li class="edit-book-input">
+      <label>Título:</label>
+      <input type="text" ng-model="book.title">
+    </li>
+
+    <li class="edit-book-input">
+      <label>Edição:</label>
+      <input type="text" ng-model="book.edition">
+    </li>
+
+    <li class="edit-book-input">
+      <label>Páginas:</label>
+      <input type="text" ng-model="book.pages">
+    </li>
+
+    <li class="edit-book-input">
+      <input class="btn btn-primary" type="submit" value="Editar livro">
+    </li>
+  </ul>
+</form>

@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email, :name
 
-  attr_accessible :email, :name, :password, :password_confirmation
+  attr_accessible :email, :is_admin, :name, :password, :password_confirmation
 end
