@@ -19,8 +19,7 @@
     book = $scope.books[index]
     book.user_id = $scope.currentUser.id
     book.lending_date = new Date().toLocaleString()
-    # OPTIMIZE: Discover how to use default param '@id'.
-    book.$update({ id: id })
+    book.$update()
 
   $scope.return = (id, title, index) ->
     answer = confirm "Tem certeza que deseja devolver #{title}?"
@@ -29,19 +28,17 @@
       book = $scope.books[index]
       book.user_id = null
       book.lending_date = null
-      # OPTIMIZE: Discover how to use default param '@id'.
-      book.$update({ id: id })
+      book.$update()
 
   $scope.editBook = (book) ->
-    if $scope.currentUser
+    if $scope.currentUser.is_admin
       $location.path "books/#{book.id}/edit"
 ]
 
 @EditBookCtrl = ['$scope', '$location', '$routeParams', 'Book', ($scope, $location, $routeParams, Book) ->
   $scope.book = Book.get(id: $routeParams.id)
 
-  $scope.editBook = (book) ->
-    # OPTIMIZE: Discover how to use default param '@id'.
-    book.$update({ id: book.id })
+  $scope.editBook = ->
+    $scope.book.$update()
     $scope.showEditSucess = true
 ]

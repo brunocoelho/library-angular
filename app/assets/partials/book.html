@@ -5,24 +5,24 @@
 
 <a class="link-back-books" ng-href="/">Voltar para tela inicial</a>
 
-<form class="form-horizontal" ng-submit="editBook(book)">
+<form name="form-edit" class="form-horizontal" ng-submit="editBook()">
   <ul class="edit-book">
 
     <img class="img-book" ng-src={{book.image_url}} alt="book image">
 
     <li class="edit-book-input">
       <label>Título:</label>
-      <input type="text" ng-model="book.title">
+      <input name="title" type="text" ng-model="book.title" required>
     </li>
 
     <li class="edit-book-input">
       <label>Edição:</label>
-      <input type="text" ng-model="book.edition">
+      <input name="edition" type="text" ng-model="book.edition" required>
     </li>
 
     <li class="edit-book-input">
       <label>Páginas:</label>
-      <input type="text" ng-model="book.pages">
+      <input name="pages" type="text" ng-model="book.pages" required>
     </li>
 
     <li class="edit-book-input">
