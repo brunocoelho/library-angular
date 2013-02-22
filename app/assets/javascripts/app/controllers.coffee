@@ -13,7 +13,19 @@
 ]
 
 @BookCtrl = ['$scope', '$location', 'Book', ($scope, $location, Book) ->
-  $scope.books = Book.index()
+  $scope.books = Book.index ->
+    checkDate(book) for book in $scope.books unless $scope.currentUser.is_admin
+
+  checkDate = (book) ->
+    if book.user_id is $scope.currentUser.id
+      lendingDate = new Date(book.lending_date).getTime()
+      sevenDays = 7 * 24 * 60 * 60 * 1000
+      today = new Date().getTime()
+      if today - sevenDays > lendingDate
+        renew = confirm "Você passou do prazo de devolver #{book.title}, deseja renovar este livro?"
+        if renew
+          book.lending_date = new Date().toLocaleString()
+          book.$update()
 
   $scope.borrow = (id, index) ->
     book = $scope.books[index]
