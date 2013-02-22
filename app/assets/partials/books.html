@@ -28,13 +28,16 @@
           Retorne o livro em {{formatDate(book.lending_date)}}
         </dd>
 
-      </dl>
-      </div>
 
+      </dl>
+    </div>
+
+    <div ng-show="currentUser.is_admin == null">
       <p class="book-actions">
         <button class="btn btn-primary" ng-hide="book.user_id" ng-click="borrow(book.id, $index)">Pegar emprestado</button>
         <button class="btn" ng-show="book.user_id == currentUser.id" ng-click="return(book.id, book.title, $index)">Devolver</button>
       </p>
     </div>
-  </li>
+  </div>
+</li>
 </ul>
