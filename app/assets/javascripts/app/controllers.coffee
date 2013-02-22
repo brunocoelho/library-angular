@@ -43,5 +43,5 @@
   $scope.editBook = (book) ->
     # OPTIMIZE: Discover how to use default param '@id'.
     book.$update({ id: book.id })
-    $location.path '/'
+    $scope.showEditSucess = true
 ]
