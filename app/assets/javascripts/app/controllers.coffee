@@ -3,10 +3,7 @@
 @ApplicationCtrl = ['$scope', 'User', 'Book', ($scope, User, Book) ->
   console.log 'App up and running...'
 
-  $scope.currentUser = User.user( ->
-    if $scope.currentUser
-      $scope.books = Book.index()
-  )
+  $scope.currentUser = User.user()
 
   $scope.formatDate = (date) ->
     daysToReturn = 7
@@ -16,6 +13,7 @@
 ]
 
 @BookCtrl = ['$scope', '$location', 'Book', ($scope, $location, Book) ->
+  $scope.books = Book.index()
 
   $scope.borrow = (id, index) ->
     book = $scope.books[index]
@@ -39,10 +37,8 @@
       $location.path "books/#{book.id}/edit"
 ]
 
-@EditBookCtrl = ['$scope', '$location', '$routeParams', ($scope, $location, $routeParams) ->
-
-  paramId = Number($routeParams.id)
-  $scope.book = (book for book in $scope.books when book.id is paramId)[0]
+@EditBookCtrl = ['$scope', '$location', '$routeParams', 'Book', ($scope, $location, $routeParams, Book) ->
+  $scope.book = Book.get(id: $routeParams.id)
 
   $scope.editBook = (book) ->
     # OPTIMIZE: Discover how to use default param '@id'.
