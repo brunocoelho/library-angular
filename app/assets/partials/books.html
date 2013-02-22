@@ -4,40 +4,39 @@
       <img class="img-book" ng-src={{book.image_url}} alt="book image">
 
       <div class="container-details">
-      <dl class="book-details">
-        <dt>Título:</dt>
-        <dd>{{book.title}}</dd>
+        <dl class="book-details">
+          <dt>Título:</dt>
+          <dd>{{book.title}}</dd>
 
-        <dt>Edição:</dt>
-        <dd>{{book.edition}}</dd>
+          <dt>Edição:</dt>
+          <dd>{{book.edition}}</dd>
 
-        <dt>Páginas:</dt>
-        <dd>{{book.pages}}</dd>
+          <dt>Páginas:</dt>
+          <dd>{{book.pages}}</dd>
 
-        <dt>Autores:</dt >
-        <dd ng-repeat="author in book.authors">
-          {{author.name}}
-        </dd>
+          <dt>Autores:</dt >
+            <dd ng-repeat="author in book.authors">
+              {{author.name}}
+            </dd>
 
-        <dt>Status:</dt>
-        <dd ng-show="book.user_id == null">Disponível</dd>
-        <dd ng-show="book.user_id && book.user_id != currentUser.id">
-          Disponível em {{formatDate(book.lending_date)}}
-        </dd>
-        <dd ng-show="book.user_id && book.user_id == currentUser.id">
-          Retorne o livro em {{formatDate(book.lending_date)}}
-        </dd>
+            <dt>Status:</dt>
+            <dd ng-show="book.user_id == null">Disponível</dd>
+            <dd ng-show="book.user_id && book.user_id != currentUser.id">
+              Disponível em {{formatDate(book.lending_date)}}
+            </dd>
+            <dd ng-show="book.user_id && book.user_id == currentUser.id">
+              Retorne o livro em {{formatDate(book.lending_date)}}
+            </dd>
 
+          </dl>
+        </div>
 
-      </dl>
-    </div>
-
-    <div ng-show="currentUser.is_admin == null">
-      <p class="book-actions">
-        <button class="btn btn-primary" ng-hide="book.user_id" ng-click="borrow(book.id, $index)">Pegar emprestado</button>
-        <button class="btn" ng-show="book.user_id == currentUser.id" ng-click="return(book.id, book.title, $index)">Devolver</button>
-      </p>
-    </div>
-  </div>
-</li>
-</ul>
+        <div ng-show="currentUser.is_admin == null">
+          <p class="book-actions">
+            <button class="btn btn-primary" ng-hide="book.user_id" ng-click="borrow(book.id, $index)">Pegar emprestado</button>
+            <button class="btn" ng-show="book.user_id == currentUser.id" ng-click="return(book.id, book.title, $index)">Devolver</button>
+          </p>
+        </div>
+      </div>
+    </li>
+  </ul>
