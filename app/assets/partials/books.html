@@ -19,14 +19,8 @@
               {{author.name}}
             </dd>
 
-            <dt>Status:</dt>
-            <dd ng-show="book.user_id == null">Disponível</dd>
-            <dd ng-show="book.user_id && book.user_id != currentUser.id">
-              Disponível em {{formatDate(book.lending_date)}}
-            </dd>
-            <dd ng-show="book.user_id && book.user_id == currentUser.id">
-              Retorne o livro em {{formatDate(book.lending_date)}}
-            </dd>
+          <dt>Status:</dt>
+            <dd>{{book.status}}</dd>
 
           </dl>
         </div>

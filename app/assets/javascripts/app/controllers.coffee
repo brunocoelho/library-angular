@@ -17,6 +17,9 @@
     checkDate(book) for book in $scope.books unless $scope.currentUser.is_admin
 
   checkDate = (book) ->
+    console.log book.id
+    book.status = getStatus(book)
+    console.log book.status
     if book.user_id is $scope.currentUser.id
       lendingDate = new Date(book.lending_date).getTime()
       sevenDays = 7 * 24 * 60 * 60 * 1000
@@ -31,6 +34,7 @@
     book = $scope.books[index]
     book.user_id = $scope.currentUser.id
     book.lending_date = new Date().toLocaleString()
+    book.status = getStatus(book)
     book.$update()
 
   $scope.return = (id, title, index) ->
@@ -40,11 +44,20 @@
       book = $scope.books[index]
       book.user_id = null
       book.lending_date = null
+      book.status = getStatus(book)
       book.$update()
 
   $scope.editBook = (book) ->
     if $scope.currentUser.is_admin
       $location.path "books/#{book.id}/edit"
+
+  getStatus = (book) ->
+    if book.user_id is null
+      'Disponível'
+    else if book.user_id and book.user_id isnt $scope.currentUser.id
+       "Disponível em #{$scope.formatDate(book.lending_date)}"
+    else
+       "Retorne o livro em #{$scope.formatDate(book.lending_date)}"
 ]
 
 @EditBookCtrl = ['$scope', '$location', '$routeParams', 'Book', ($scope, $location, $routeParams, Book) ->
