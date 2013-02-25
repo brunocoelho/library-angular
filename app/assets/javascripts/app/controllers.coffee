@@ -14,12 +14,12 @@
 
 @BookCtrl = ['$scope', '$location', 'Book', ($scope, $location, Book) ->
   $scope.books = Book.index ->
-    checkDate(book) for book in $scope.books unless $scope.currentUser.is_admin
+    for book in $scope.books
+      book.status = getStatus(book)
+      unless $scope.currentUser.is_admin
+        checkDate(book)
 
   checkDate = (book) ->
-    console.log book.id
-    book.status = getStatus(book)
-    console.log book.status
     if book.user_id is $scope.currentUser.id
       lendingDate = new Date(book.lending_date).getTime()
       sevenDays = 7 * 24 * 60 * 60 * 1000
@@ -54,7 +54,7 @@
   getStatus = (book) ->
     if book.user_id is null
       'Disponível'
-    else if book.user_id and book.user_id isnt $scope.currentUser.id
+    else if book.user_id isnt $scope.currentUser.id
        "Disponível em #{$scope.formatDate(book.lending_date)}"
     else
        "Retorne o livro em #{$scope.formatDate(book.lending_date)}"
