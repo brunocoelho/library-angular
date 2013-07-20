@@ -16,7 +16,7 @@ Login como funcionário:
 
 ## Specs
 
-* Ruby: 1.9.3-p362
+* Ruby: 2.0.0-p0
 * Rails: 3.2.11
 * Banco em desenvolvimento: MySql
 * Banco em produção: PostgreSQL
