@@ -1,38 +1,20 @@
 class BooksController < ApplicationController
   respond_to :html, :json
-  before_filter :find_book, except: [:index, :create, :dashboard]
+
+  API_BASE = 'https://www.googleapis.com/books/v1/volumes'
 
   def index
-    @books = Book.order('created_at ASC')
+    @books = HTTParty.get(API_BASE + "?q=quilting&country=US")
     respond_with @books
   end
 
   def show
-    respond_with @book
-  end
+    @book = HTTParty.get(API_BASE + "/#{params[:id]}?country=US")
 
-  def create
-    @book = Book.create(params[:book])
-    created = @book ? 'true' : 'false'
-    render json: { created: created }
-  end
-
-  def edit
-    respond_with @book
-  end
-
-  def update
-    @book.update_attributes(params[:book])
-    respond_with @book
-  end
-
-  def destroy
-    @book.destroy
-    render json: { deleted: 'true' }
-  end
-
-  private
-  def find_book
-    @book = Book.find(params[:id])
+    if @book.nil?
+      redirect_to root_path
+    else
+      respond_with @book
+    end
   end
 end
