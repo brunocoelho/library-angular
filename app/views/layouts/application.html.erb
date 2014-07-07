@@ -15,7 +15,7 @@
 
           <% if user_signed_in? %>
             <form class="form-search">
-              <input type="text" class="input-medium search-query" ng-model="query" placeholder="Buscar...">
+              <input type="text" class="input-medium search-query" ng-model="query" placeholder="Search...">
             </form>
           <% end %>
 
@@ -28,22 +28,20 @@
             <%= yield %>
           </div>
 
-          <% if user_signed_in? %>
-            <div ng-show="currentUser.is_admin" class="alert admin-alert">
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <strong>Você está logado como funcionário!</strong> Duplo clique na imagem para editar.
-            </div>
+          <div class="alert admin-alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <label>Double click on any image to see more details.</label>
+          </div>
 
-            <div ng-view></div>
-          <% end %>
+          <div ng-view></div>
         </div>
 
         <div class="span1 logout">
           <!--Logout content-->
 
           <% if user_signed_in? %>
-            <%= link_to 'Sair', destroy_user_session_path,
-              method: :delete, title: 'Fazer logout', :'data-placement' => "below" %>
+            <%= link_to 'Sign out', destroy_user_session_path,
+              method: :delete, title: 'Sign out', :'data-placement' => "below" %>
           <% end %>
         </div>
       </div>
