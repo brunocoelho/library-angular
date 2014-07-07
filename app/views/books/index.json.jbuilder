@@ -1,12 +1,8 @@
-json.array!(@books) do |json, book|
-  json.id           book.id
-  json.title        book.title
-  json.isbn         book.isbn
-  json.edition      book.edition
-  json.pages        book.pages
-  json.lending_date book.lending_date
-  json.user_id      book.user_id
-  json.image_url    book.image_url
-
-  json.authors book.authors, :id, :name
+json.array!(@books['items']) do |json, book|
+  json.authors      book['authors']
+  json.id           book['id']
+  json.image_url    book['volumeInfo']['imageLinks']['thumbnail']
+  json.pages        book['volumeInfo']['pageCount']
+  json.selfLink     book['selfLink']
+  json.title        book['volumeInfo']['title']
 end
