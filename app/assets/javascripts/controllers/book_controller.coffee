@@ -1,17 +1,3 @@
-## Controllers
-
-@ApplicationCtrl = ['$scope', 'User', 'Book', ($scope, User, Book) ->
-  console.log 'App up and running...'
-
-  $scope.currentUser = User.user()
-
-  $scope.formatDate = (date) ->
-    daysToReturn = 7
-    newDate = new Date(date).getTime()
-    formatedDate = new Date(daysToReturn * 24 * 60 * 60 * 1000 + newDate)
-    formatedDate.toLocaleDateString()
-]
-
 @BookCtrl = ['$scope', '$location', 'Book', ($scope, $location, Book) ->
   $scope.books = Book.index ->
     for book in $scope.books
@@ -49,7 +35,7 @@
 
   $scope.editBook = (book) ->
     if $scope.currentUser.is_admin
-      $location.path "books/#{book.id}/edit"
+      $location.path "books/#{book.id}"
 
   getStatus = (book) ->
     if book.user_id is null
@@ -58,12 +44,4 @@
        "Disponível em #{$scope.formatDate(book.lending_date)}"
     else
        "Retorne o livro em #{$scope.formatDate(book.lending_date)}"
-]
-
-@EditBookCtrl = ['$scope', '$location', '$routeParams', 'Book', ($scope, $location, $routeParams, Book) ->
-  $scope.book = Book.get(id: $routeParams.id)
-
-  $scope.editBook = ->
-    $scope.book.$update()
-    $scope.showEditSucess = true
 ]

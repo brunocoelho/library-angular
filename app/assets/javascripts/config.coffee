@@ -1,18 +1,20 @@
-## App
-
 libraryApp = angular.module 'libraryApp', ['BookService', 'UserService']
 
-libraryApp.config ['$routeProvider', '$locationProvider', '$httpProvider',
-    ($routeProvider, $locationProvider, $httpProvider) ->
+libraryApp.config ['$routeProvider', '$httpProvider',
+    ($routeProvider, $httpProvider) ->
+
       $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr 'content'
-      $locationProvider.html5Mode(true).hashPrefix('!') # Deleting hashbang symbol '#' from url.
+
       $routeProvider
         .when('/',
           templateUrl: '/assets/books.html',
           controller: BookCtrl
         )
-        .when('/books/:id/edit',
+        .when('/books/:id',
           templateUrl: '/assets/book.html',
           controller: EditBookCtrl
+        )
+        .otherwise(
+          redirectTo: '/'
         )
   ]
