@@ -6,3 +6,4 @@
 .DS_Store
 .rvmrc
 .rspec
+/node_modules
