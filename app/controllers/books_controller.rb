@@ -4,17 +4,22 @@ class BooksController < ApplicationController
   API_BASE = 'https://www.googleapis.com/books/v1/volumes'
 
   def index
-    @books = HTTParty.get(API_BASE + "?q=quilting&country=US")
+    query = params[:q]
+
+    if query.nil? || query.empty?
+      query = 'javascript'
+    end
+
+    startIndex = params[:startIndex] || 0
+    params = "?q=#{query}&country=US&maxResults=40&startIndex=#{startIndex}"
+
+    @books = HTTParty.get(API_BASE + params)
     respond_with @books
   end
 
   def show
     @book = HTTParty.get(API_BASE + "/#{params[:id]}?country=US")
 
-    if @book.nil?
-      redirect_to root_path
-    else
-      respond_with @book
-    end
+    respond_with @book
   end
 end
