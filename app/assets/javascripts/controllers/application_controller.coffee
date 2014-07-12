@@ -1,13 +1,13 @@
 ## Controllers
 
-@ApplicationCtrl = ['$scope', 'User', ($scope, User) ->
-  console.log 'App up and running...'
+@ApplicationCtrl = ($scope, User, BookService, LoadingService, BookShareService) ->
+  promise = User.user()
+  promise.$promise.then (user) ->
+    $scope.currentUser = user
 
-  $scope.currentUser = User.user()
+  $scope.searchBooks = ->
+    LoadingService.setLoading true
+    BookService.index { q: $scope.query }, (books) ->
+      $scope.$broadcast 'books', books
 
-  $scope.formatDate = (date) ->
-    daysToReturn = 7
-    newDate = new Date(date).getTime()
-    formatedDate = new Date(daysToReturn * 24 * 60 * 60 * 1000 + newDate)
-    formatedDate.toLocaleDateString()
-]
+@ApplicationCtrl.$inject = ['$scope', 'User', 'BookService', 'LoadingService', 'BookShareService']
