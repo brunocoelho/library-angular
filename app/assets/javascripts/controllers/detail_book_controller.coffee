@@ -22,9 +22,12 @@
     $scope.similarBook = BookShareService.books[0]
   else
     BookService.get { id: $routeParams.id }, (book) ->
-      $scope.book = book
-      BookService.index (books) ->
-        BookShareService.books = FilterBookService.filter(books, $scope)
-        $scope.similarBook = books[0]
+      if book.code is '404'
+        $scope.showAllBooks()
+      else
+        $scope.book = book
+        BookService.index (books) ->
+          BookShareService.books = FilterBookService.filter(books, $scope)
+          $scope.similarBook = books[0]
 
 @DetailBookCtrl.$inject = ['$scope', '$routeParams', 'BookService', 'BookShareService', 'FilterBookService', '$location', '$resource']
