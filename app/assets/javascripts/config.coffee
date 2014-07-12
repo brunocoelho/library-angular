@@ -1,4 +1,4 @@
-@libraryApp = angular.module 'libraryApp', ['ngResource']
+@libraryApp = angular.module 'libraryApp', ['ngResource', 'ngRoute', 'ngSanitize']
 
 @libraryApp.config ['$routeProvider', '$httpProvider',
     ($routeProvider, $httpProvider) ->
@@ -12,7 +12,7 @@
         )
         .when('/books/:id',
           templateUrl: '/assets/book.html',
-          controller: EditBookCtrl
+          controller: DetailBookCtrl
         )
         .otherwise(
           redirectTo: '/'
