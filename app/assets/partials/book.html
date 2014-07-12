@@ -1,32 +1,88 @@
-<div ng-show="showEditSucess" class="alert admin-alert">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
-  <strong>Livro atualizado com sucesso!</strong>
-</div>
+<div class="book">
+  <a class="link-back-books" data-ng-click="showAllBooks()">Back</a>
 
-<a class="link-back-books" ng-href="/">Voltar para tela inicial</a>
+  <ul class="thumbnails">
+    <li class="span8 product-card principal-book" data-ng-class="{ loading: !book }">
+      <div class="span5 principal-book-image">
+        <a data-ng-href="{{book.infoLink}}" target="_blank">
+          <img class="img-book" data-ng-src={{book.image_url}} alt="book image">
+        </a>
+      </div>
 
-<form name="form-edit" class="form-horizontal" ng-submit="editBook()">
-  <ul class="edit-book">
+      <div class="span6 container-details">
+        <dl class="book-details">
+          <dt>Title:</dt>
+          <dd>{{book.title}}</dd>
 
-    <img class="img-book" ng-src={{book.image_url}} alt="book image">
+          <dt>Authors:</dt>
+          <dd data-ng-repeat="author in book.authors">
+            {{author}}
+          </dd>
 
-    <li class="edit-book-input">
-      <label>Título:</label>
-      <input name="title" type="text" ng-model="book.title" required>
+          <dt>Description:</dt>
+          <dd data-ng-bind-html="book.description"></dd>
+
+          <dt>Pages:</dt>
+          <dd>{{book.pages}}</dd>
+
+          <dt>Publisher:</dt>
+          <dd>{{book.publisher}}</dd>
+
+          <dt>Published date:</dt>
+          <dd>{{book.publishedDate}}</dd>
+
+          <dt>Number of ratings:</dt>
+          <dd>{{book.ratingsCount}}</dd>
+
+          <dt>Average rating:</dt>
+          <dd>{{book.averageRating}}</dd>
+
+          <dt>Saleability:</dt>
+          <dd>{{book.saleability}}</dd>
+
+          <div data-ng-show="book.saleability == 'FOR_SALE'">
+            <dt>List Price:</dt>
+            <dd>{{book.listPrice | currency}}</dd>
+
+            <dt>Retail Price:</dt>
+            <dd>{{book.retailPrice | currency}}</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="loader-thumbnail"></div>
     </li>
 
-    <li class="edit-book-input">
-      <label>Edição:</label>
-      <input name="edition" type="text" ng-model="book.edition" required>
-    </li>
+    <li class="span4 product-card" data-ng-class="{ loading: !similarBook }">
+      <div class="thumbnail">
+        <span class='prev-book' data-ng-click="showPrevBook()"></span>
+        <span class='next-book' data-ng-click="showNextBook()"></span>
+        <img class="img-book" data-ng-src={{similarBook.image_url}} alt="book image">
 
-    <li class="edit-book-input">
-      <label>Páginas:</label>
-      <input name="pages" type="text" ng-model="book.pages" required>
-    </li>
+        <div class="container-details">
+          <dl class="book-details">
+            <dt>Title:</dt>
+            <dd>{{similarBook.title}}</dd>
 
-    <li class="edit-book-input">
-      <input class="btn btn-primary" type="submit" value="Editar livro">
+            <dt>Pages:</dt>
+            <dd>{{similarBook.pages}}</dd>
+
+            <dt>Authors:</dt>
+            <dd data-ng-repeat="author in similarBook.authors">
+              {{author}}
+            </dd>
+
+            <dt>Average Rating:</dt>
+            <dd>{{similarBook.averageRating}}</dd>
+
+            <dt>Ratings Count:</dt>
+            <dd>{{similarBook.ratingsCount}}</dd>
+
+            <dt>Saleability:</dt>
+            <dd>{{similarBook.saleability}}</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="loader-thumbnail"></div>
     </li>
   </ul>
-</form>
+</div>

@@ -1,36 +1,42 @@
 <ul class="thumbnails">
-  <li class="span4 product-card" style="width: 276px; margin: 0 15px 15px 0;" ng-repeat="book in books | filter:query">
-    <div ng-dblclick="editBook(book)" class="thumbnail">
-      <img class="img-book" ng-src={{book.image_url}} alt="book image">
+  <li class="span4 product-card" data-ng-repeat="book in books">
+    <div data-ng-click="viewBook(book)" class="thumbnail clickable">
+      <img class="img-book" data-ng-src={{book.image_url}} alt="book image">
 
       <div class="container-details">
         <dl class="book-details">
-          <dt>Título:</dt>
+          <dt>Title:</dt>
           <dd>{{book.title}}</dd>
 
-          <dt>Edição:</dt>
-          <dd>{{book.edition}}</dd>
-
-          <dt>Páginas:</dt>
+          <dt>Pages:</dt>
           <dd>{{book.pages}}</dd>
 
-          <dt>Autores:</dt >
-            <dd ng-repeat="author in book.authors">
-              {{author.name}}
-            </dd>
+          <dt>Authors:</dt>
+          <dd data-ng-repeat="author in book.authors">
+            {{author}}
+          </dd>
 
-          <dt>Status:</dt>
-            <dd>{{book.status}}</dd>
+          <dt>Average Rating:</dt>
+          <dd>{{book.averageRating}}</dd>
 
-          </dl>
-        </div>
+          <dt>Ratings Count:</dt>
+          <dd>{{book.ratingsCount}}</dd>
 
-        <div ng-show="currentUser.is_admin == null">
-          <p class="book-actions">
-            <button class="btn btn-primary" ng-hide="book.user_id" ng-click="borrow(book.id, $index)">Pegar emprestado</button>
-            <button class="btn" ng-show="book.user_id == currentUser.id" ng-click="return(book.id, book.title, $index)">Devolver</button>
-          </p>
-        </div>
+          <dt>Saleability:</dt>
+          <dd>{{book.saleability}}</dd>
+
+        </dl>
       </div>
-    </li>
+    </div>
+  </li>
+</ul>
+
+<div class="pagination pagination-centered pagination-large">
+  <ul>
+    <li data-ng-class="{ disabled: (!startIndex || startIndex === 0) }"><a data-ng-click="fetchPaginatedBooks(0)">1</a></li>
+    <li data-ng-class="{ disabled: (startIndex === 20) }"><a data-ng-click="fetchPaginatedBooks(20)">2</a></li>
+    <li data-ng-class="{ disabled: (startIndex === 40) }"><a data-ng-click="fetchPaginatedBooks(40)">3</a></li>
+    <li data-ng-class="{ disabled: (startIndex === 60) }"><a data-ng-click="fetchPaginatedBooks(60)">4</a></li>
+    <li data-ng-class="{ disabled: (startIndex === 80) }"><a data-ng-click="fetchPaginatedBooks(80)">5</a></li>
   </ul>
+</div>
