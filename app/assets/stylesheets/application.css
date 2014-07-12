@@ -13,6 +13,19 @@
  *= require_tree .
  */
 
+.github-ribbon {
+  position: fixed;
+  top: 0;
+  right: 0;
+  border: 0;
+  z-index: 404
+}
+
+.logo-wrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .form-search, .logout {
   margin: 35px 0 0 0;
 }
@@ -25,4 +38,34 @@
 .admin-alert {
   width: 808px;
   margin: 10px 0 0 8px;
+}
+
+.loader, .loader-thumbnail {
+  display: none;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, .8) url('loader.gif') 50% 50% no-repeat;
+}
+
+.loader {
+  position: fixed;
+}
+
+.loader-thumbnail {
+  position: absolute;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+body.loading .loader {
+    display: block;
+}
+
+.thumbnails li.loading .loader-thumbnail {
+  display: block;
 }
