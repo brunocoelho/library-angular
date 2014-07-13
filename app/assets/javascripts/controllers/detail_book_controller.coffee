@@ -1,4 +1,4 @@
-@DetailBookCtrl = ($scope, $routeParams, BookService, BookShareService, FilterBookService, $location, $resource) ->
+@DetailBookCtrl = ($scope, $routeParams, $location, $resource, BookService, BookShareService, FilterBookService, LocalStorageService) ->
 
   $scope.totalBooksNumber = 0
   bookIndex = 0
@@ -26,8 +26,9 @@
         $scope.showAllBooks()
       else
         $scope.book = book
-        BookService.index (books) ->
+        query = LocalStorageService.getQuery()
+        BookService.index { q: query }, (books) ->
           BookShareService.books = FilterBookService.filter(books, $scope)
           $scope.similarBook = books[0]
 
-@DetailBookCtrl.$inject = ['$scope', '$routeParams', 'BookService', 'BookShareService', 'FilterBookService', '$location', '$resource']
+@DetailBookCtrl.$inject = ['$scope', '$routeParams', '$location', '$resource', 'BookService', 'BookShareService', 'FilterBookService', 'LocalStorageService']

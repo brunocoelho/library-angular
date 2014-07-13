@@ -1,8 +1,8 @@
-@BookCtrl = ($scope, $location, BookService, BookShareService, LoadingService, FilterBookService) ->
+@BookCtrl = ($rootScope, $scope, $location, BookService, BookShareService, LoadingService, FilterBookService, LocalStorageService) ->
 
-  fetchBooks = (startIndex) ->
+  fetchBooks = (startIndex, query) ->
     LoadingService.setLoading true
-    BookService.index { startIndex: startIndex }, (books) ->
+    BookService.index { startIndex: startIndex, q: query }, (books) ->
       $scope.books = books
       BookShareService.books = books
       LoadingService.setLoading false
@@ -13,15 +13,17 @@
       $scope.books = BookShareService.books
       $scope.books
     else
-      fetchBooks()
+      query = LocalStorageService.getQuery()
+      fetchBooks(0, query)
 
   $scope.viewBook = (book) ->
     BookShareService.book = book
     $location.path "books/#{book.id}"
 
   $scope.fetchPaginatedBooks = (startIndex) ->
-    $scope.startIndex = startIndex
-    fetchBooks(startIndex)
+    $rootScope.startIndex = startIndex
+    query = LocalStorageService.getQuery()
+    fetchBooks(startIndex, query)
     window.scrollTo(0, 0)
 
   $scope.$on 'books', (event, books) ->
@@ -30,4 +32,4 @@
     BookShareService.books = books
     LoadingService.setLoading false
 
-@BookCtrl.$inject = ['$scope', '$location', 'BookService', 'BookShareService', 'LoadingService', 'FilterBookService']
+@BookCtrl.$inject = ['$rootScope', '$scope', '$location', 'BookService', 'BookShareService', 'LoadingService', 'FilterBookService', 'LocalStorageService']

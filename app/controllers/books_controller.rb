@@ -5,12 +5,8 @@ class BooksController < ApplicationController
 
   def index
     query = params[:q]
-
-    if query.nil? || query.empty?
-      query = 'javascript'
-    end
-
     startIndex = params[:startIndex] || 0
+
     params = "?q=#{query}&country=US&maxResults=40&startIndex=#{startIndex}"
 
     @books = HTTParty.get(API_BASE + params)
