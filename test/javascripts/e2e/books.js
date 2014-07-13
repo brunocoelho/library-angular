@@ -1,23 +1,17 @@
 describe('Bookle', function() {
-	// beforeEach(function() {
-	// });
+	(function() {
 
+		browser.get('http://localhost:3000');
 
-	// it('should login', function() {
-		(function() {
+		var email = element(by.id('user_email')),
+			password = element(by.id('user_password')),
+			signinButton = element(by.id('signin'));
 
-			browser.get('http://localhost:3000');
+		email.sendKeys('bruno@gmail.com');
+		password.sendKeys('12345678');
 
-			var email = element(by.id('user_email')),
-				password = element(by.id('user_password')),
-				signinButton = element(by.id('signin'));
-
-			email.sendKeys('bruno@gmail.com');
-			password.sendKeys('12345678');
-
-			signinButton.click();
-		}());
-	// });
+		signinButton.click();
+	}());
 
 	it('should have a title', function() {
 	  	expect(browser.getTitle()).toEqual("Library");
@@ -68,34 +62,4 @@ describe('Bookle', function() {
 
 		expect(similarBookImageSrc).not.toBe(newSimilarImageSrc);
 	});
-
-
-  //####################
-
-  // var firstNumber = element(by.model('first'));
-  // var secondNumber = element(by.model('second'));
-  // var goButton = element(by.id('gobutton'));
-  // var latestResult = element(by.binding('latest'));
-
-  // beforeEach(function() {
-  //   browser.get('http://juliemr.github.io/protractor-demo/');
-  // });
-
-  // it('should have a title', function() {
-  //   expect(browser.getTitle()).toEqual('Super Calculator');
-  // });
-
-  // it('should add one and two', function() {
-  //   firstNumber.sendKeys(1);
-  //   secondNumber.sendKeys(2);
-
-  //   goButton.click();
-
-  //   expect(latestResult.getText()).toEqual('3');
-  // });
-
-  // it('should add four and six', function() {
-  //   // Fill this in.
-  //   expect(latestResult.getText()).toEqual('10');
-  // });
 });

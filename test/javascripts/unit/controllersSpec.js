@@ -97,7 +97,7 @@ describe('Controllers', function() {
 
         beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('books?q=science').
+            $httpBackend.expectGET('books?q=science&startIndex=0').
                 respond(books);
 
             scope = $rootScope.$new();
