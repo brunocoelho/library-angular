@@ -8,7 +8,7 @@ You can take a look at the demo [here](http://library-angular.herokuapp.com/).
 ## Specs
 
 * Ruby: 2.0.0-p0
-* Rails: 3.2.11
+* Rails: 3.2.12
 * Development database: MySql
 * Production database: PostgreSQL
 
