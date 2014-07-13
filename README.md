@@ -70,6 +70,17 @@ In order to have `karma-cli` installed globally run:
 
 Now, you will be able to run `karma start` and see the unit tests running.
 
+## Known bugs
+
+### Production
+* When the user search for a book, the first results are not displayed, only when the user clicks on a pagination link.
+* In the principal page, if you click on a book to see the details, the similar books are not being displayed properly, only if the user goes to details book URL directly.
+
+
+### Development
+Up to now there's no bug reported on development environment.
+
+
 ## License
 
 Library Angular is released under the [MIT License](http://www.opensource.org/licenses/MIT).
