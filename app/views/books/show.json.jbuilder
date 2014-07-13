@@ -1,4 +1,4 @@
-if @book['error']['code'] == 404
+if @book['error']
 	json.error 'Book not found'
 	json.code '404'
 else
