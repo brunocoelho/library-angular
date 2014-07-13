@@ -27,7 +27,7 @@ describe('Controllers', function() {
             $httpBackend.expectGET('books/856').
                 respond(book);
 
-            $httpBackend.expectGET('books').
+            $httpBackend.expectGET('books?q=science').
                 respond([{ id:1 }, { id:2 }]);
 
             $routeParams.id = '856'
@@ -72,7 +72,7 @@ describe('Controllers', function() {
 
         beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('books?').
+            $httpBackend.expectGET('books?q=science&startIndex=0').
                 respond(books);
 
             scope = $rootScope.$new();
@@ -89,27 +89,29 @@ describe('Controllers', function() {
     });
 
     describe('ApplicationCtrl', function() {
-        var ctrl, scope, user, $httpBackend;
-
-        var user = { name: 'John Galt', email: 'john@gmail.com' };
+        var books, ctrl, scope, $httpBackend;
 
         beforeEach(module('libraryApp'));
 
+        books = [{ id: 2 }];
+
         beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('user').
-                respond(user);
+            $httpBackend.expectGET('books?q=science').
+                respond(books);
 
             scope = $rootScope.$new();
             ctrl = $controller('ApplicationCtrl', { $scope: scope });
+
+            spyOn(scope, '$broadcast');
         }));
 
-        it('should have user fetched from xhr', function() {
-            expect(scope.currentUser).toBe(undefined);
+        it('should have books fetched from xhr', function() {
+            scope.searchBooks();
 
             $httpBackend.flush();
 
-            expect(scope.currentUser.email).toBe(user.email);
+            expect(scope.$broadcast).toHaveBeenCalled();
         });
     });
 });
