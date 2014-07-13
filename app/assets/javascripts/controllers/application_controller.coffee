@@ -3,10 +3,11 @@
 @ApplicationCtrl = ($rootScope, $scope, $location, User, BookService, LoadingService, BookShareService, LocalStorageService) ->
 
   $scope.searchBooks = ->
-    $rootScope.startIndex = 0
+    startIndex = 0
+    $rootScope.startIndex = startIndex
     LoadingService.setLoading true
     query = LocalStorageService.getQuery($scope.query)
-    BookService.index { q: query }, (books) ->
+    BookService.index { q: query, startIndex: startIndex }, (books) ->
       $scope.$broadcast 'books', books
 
 @ApplicationCtrl.$inject = ['$rootScope', '$scope', '$location', 'User', 'BookService', 'LoadingService', 'BookShareService', 'LocalStorageService']

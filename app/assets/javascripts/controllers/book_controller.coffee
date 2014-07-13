@@ -7,15 +7,6 @@
       BookShareService.books = books
       LoadingService.setLoading false
 
-  do ->
-    if BookShareService.books.length isnt 0
-      LoadingService.setLoading false
-      $scope.books = BookShareService.books
-      $scope.books
-    else
-      query = LocalStorageService.getQuery()
-      fetchBooks(0, query)
-
   $scope.viewBook = (book) ->
     BookShareService.book = book
     $location.path "books/#{book.id}"
@@ -31,5 +22,14 @@
     $scope.books = books
     BookShareService.books = books
     LoadingService.setLoading false
+
+  do ->
+    if BookShareService.books.length isnt 0
+      LoadingService.setLoading false
+      $scope.books = BookShareService.books
+      $scope.books
+    else
+      query = LocalStorageService.getQuery()
+      fetchBooks(0, query)
 
 @BookCtrl.$inject = ['$rootScope', '$scope', '$location', 'BookService', 'BookShareService', 'LoadingService', 'FilterBookService', 'LocalStorageService']
