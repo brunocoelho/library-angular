@@ -42,7 +42,6 @@ li.span4.product-card, .product-card {
 
 .thumbnails {
   margin-top: 25px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
   display: block;
   line-height: 1;
   padding: 10px;
@@ -100,4 +99,7 @@ li.span4.product-card, .product-card {
   -moz-transition: all 200ms ease-in;
   -o-transition: all 200ms ease-in;
   transition: all 200ms ease-in;
+}
+.pager {
+  margin: 20px 10px 20px 10px;
 }

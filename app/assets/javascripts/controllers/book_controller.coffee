@@ -1,5 +1,7 @@
 @BookCtrl = ($location, $rootScope, $scope, BookService, BookShareService, FilterBookService, LoadingService, LocalStorageService) ->
 
+  BOOKS_PER_PAGE = 40
+
   fetchBooks = (startIndex, query) ->
     LoadingService.setLoading true
     BookService.index { startIndex: startIndex, q: query }, (books) ->
@@ -11,8 +13,15 @@
     BookShareService.book = book
     $location.path "books/#{book.id}"
 
-  $scope.fetchPaginatedBooks = (startIndex) ->
-    $rootScope.startIndex = startIndex
+  $scope.shouldShowPrevArrow = ->
+    BookShareService.startIndex isnt 0
+
+  $scope.fetchBooks = (direction) ->
+    return if direction is 'prev' and BookShareService.startIndex is 0
+    BookShareService.startIndex += BOOKS_PER_PAGE if direction is 'next'
+    BookShareService.startIndex -= BOOKS_PER_PAGE if direction is 'prev'
+
+    startIndex = BookShareService.startIndex
     query = LocalStorageService.getQuery()
     fetchBooks(startIndex, query)
     window.scrollTo(0, 0)

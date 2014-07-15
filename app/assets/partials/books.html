@@ -1,7 +1,7 @@
 <ul class="thumbnails">
   <li class="span4 product-card" data-ng-repeat="book in books">
     <div data-ng-click="viewBook(book)" class="thumbnail clickable">
-      <img class="img-book" data-ng-src={{book.image_url}} alt="Missing book image">
+      <img class="img-book" data-ng-src={{getBookImage(book.image_url)}} alt="Missing book image">
 
       <div class="container-details">
         <dl class="book-details">
@@ -31,12 +31,11 @@
   </li>
 </ul>
 
-<div class="pagination pagination-centered pagination-large">
-  <ul>
-    <li data-ng-class="{ disabled: (!startIndex || startIndex === 0) }"><a data-ng-click="fetchPaginatedBooks(0)">1</a></li>
-    <li data-ng-class="{ disabled: (startIndex === 20) }"><a data-ng-click="fetchPaginatedBooks(20)">2</a></li>
-    <li data-ng-class="{ disabled: (startIndex === 40) }"><a data-ng-click="fetchPaginatedBooks(40)">3</a></li>
-    <li data-ng-class="{ disabled: (startIndex === 60) }"><a data-ng-click="fetchPaginatedBooks(60)">4</a></li>
-    <li data-ng-class="{ disabled: (startIndex === 80) }"><a data-ng-click="fetchPaginatedBooks(80)">5</a></li>
-  </ul>
-</div>
+<ul class="pager">
+  <li class="previous" data-ng-class="{ disabled: !shouldShowPrevArrow() }" data-ng-click="fetchBooks('prev')">
+    <a>&larr; Older</a>
+  </li>
+  <li class="next" data-ng-click="fetchBooks('next')">
+    <a>Newer &rarr;</a>
+  </li>
+</ul>

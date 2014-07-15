@@ -1,5 +1,6 @@
 @libraryApp.factory 'BookShareService', () ->
 	{
 		books: [],
-		book: undefined
+		book: undefined,
+		startIndex: 0
 	}
