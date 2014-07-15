@@ -1,4 +1,4 @@
-@DetailBookCtrl = ($scope, $routeParams, $location, $resource, BookService, BookShareService, FilterBookService, LocalStorageService) ->
+@DetailBookCtrl = ($location, $routeParams, $scope, BookService, BookShareService, FilterBookService, LocalStorageService) ->
 
   $scope.totalBooksNumber = 0
   bookIndex = 0
@@ -31,4 +31,4 @@
           BookShareService.books = FilterBookService.filter(books, $scope)
           $scope.similarBook = books[0]
 
-@DetailBookCtrl.$inject = ['$scope', '$routeParams', '$location', '$resource', 'BookService', 'BookShareService', 'FilterBookService', 'LocalStorageService']
+@DetailBookCtrl.$inject = ['$location', '$routeParams', '$scope', 'BookService', 'BookShareService', 'FilterBookService', 'LocalStorageService']

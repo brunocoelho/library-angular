@@ -1,4 +1,4 @@
-@BookCtrl = ($rootScope, $scope, $location, BookService, BookShareService, LoadingService, FilterBookService, LocalStorageService) ->
+@BookCtrl = ($location, $rootScope, $scope, BookService, BookShareService, FilterBookService, LoadingService, LocalStorageService) ->
 
   fetchBooks = (startIndex, query) ->
     LoadingService.setLoading true
@@ -32,4 +32,4 @@
       query = LocalStorageService.getQuery()
       fetchBooks(0, query)
 
-@BookCtrl.$inject = ['$rootScope', '$scope', '$location', 'BookService', 'BookShareService', 'LoadingService', 'FilterBookService', 'LocalStorageService']
+@BookCtrl.$inject = ['$location', '$rootScope', '$scope', 'BookService', 'BookShareService', 'FilterBookService', 'LoadingService', 'LocalStorageService']
