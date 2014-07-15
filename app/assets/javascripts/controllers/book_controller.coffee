@@ -1,6 +1,7 @@
 @BookCtrl = ($location, $rootScope, $scope, BookService, BookShareService, FilterBookService, LoadingService, LocalStorageService) ->
 
   BOOKS_PER_PAGE = 40
+  DEFAULT_IMAGE_URL = 'assets/default-book.jpg'
 
   fetchBooks = (startIndex, query) ->
     LoadingService.setLoading true
@@ -8,6 +9,9 @@
       $scope.books = books
       BookShareService.books = books
       LoadingService.setLoading false
+
+  $scope.getBookImage = (imageUrl) ->
+    if imageUrl then imageUrl else DEFAULT_IMAGE_URL
 
   $scope.viewBook = (book) ->
     BookShareService.book = book
