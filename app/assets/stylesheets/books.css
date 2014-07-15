@@ -3,7 +3,7 @@
 }
 
 .container-details {
-  min-height: 240px;
+  min-height: 190px;
 }
 
 .book-details {
@@ -37,7 +37,7 @@ li.span4.product-card, .product-card {
 .img-book {
   height: 280px;
   width: 236px;
-  margin-top: 20px;
+  margin: 20px 15px 0 15px;
 }
 
 .thumbnails {
@@ -48,7 +48,7 @@ li.span4.product-card, .product-card {
 }
 
 .thumbnail {
-  min-height: 640px;
+  height: 500px;
   position: relative;
 }
 
@@ -100,6 +100,15 @@ li.span4.product-card, .product-card {
   -o-transition: all 200ms ease-in;
   transition: all 200ms ease-in;
 }
+
 .pager {
   margin: 20px 10px 20px 10px;
+}
+
+dl.dl-horizontal dt {
+  width: 107px;
+}
+
+dl.dl-horizontal dd {
+  margin: 0 10px 0 112px;
 }

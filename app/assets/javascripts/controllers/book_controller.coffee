@@ -10,8 +10,31 @@
       BookShareService.books = books
       LoadingService.setLoading false
 
+  $scope.formatSaleability = (label) ->
+    if label is 'NOT_FOR_SALE'
+      'Not for sale'
+    else if label is 'FOR_SALE'
+      'For sale'
+    else if label is 'FREE'
+      'Free'
+    else if label is 'FOR_SALE_AND_RENTAL'
+      'For sale and rental'
+    else
+      label
+
+  $scope.getAuthors = (authors) ->
+    return if authors is undefined
+
+    if authors.length > 1
+      authors[0] + '...'
+    else
+      authors[0]
+
   $scope.getBookImage = (imageUrl) ->
     if imageUrl then imageUrl else DEFAULT_IMAGE_URL
+
+  $scope.isBookForSale = (saleability) ->
+    saleability is 'FOR_SALE'
 
   $scope.viewBook = (book) ->
     BookShareService.book = book

@@ -4,27 +4,39 @@
       <img class="img-book" data-ng-src={{getBookImage(book.image_url)}} alt="Missing book image">
 
       <div class="container-details">
-        <dl class="book-details">
+        <dl class="book-details dl-horizontal">
           <dt>Title:</dt>
-          <dd>{{book.title}}</dd>
+          <dd>{{book.title | limitTo:35}}</dd>
 
-          <dt>Pages:</dt>
-          <dd>{{book.pages}}</dd>
+          <span data-ng-show="book.pages">
+            <dt>Pages:</dt>
+            <dd>{{book.pages}}</dd>
+          </span>
 
-          <dt>Authors:</dt>
-          <dd data-ng-repeat="author in book.authors">
-            {{author}}
-          </dd>
+          <span data-ng-show="book.authors">
+            <dt>Authors:</dt>
+            <dd>
+              {{getAuthors(book.authors) | limitTo:17}}
+            </dd>
+          </span>
 
-          <dt>Average Rating:</dt>
-          <dd>{{book.averageRating}}</dd>
+          <span data-ng-show="book.averageRating">
+            <dt>Average Rating:</dt>
+            <dd>{{book.averageRating}}</dd>
+          </span>
 
-          <dt>Ratings Count:</dt>
-          <dd>{{book.ratingsCount}}</dd>
+          <span data-ng-show="book.ratingsCount">
+            <dt>Ratings Count:</dt>
+            <dd>{{book.ratingsCount}}</dd>
+          </span>
 
           <dt>Saleability:</dt>
-          <dd>{{book.saleability}}</dd>
+          <dd>{{formatSaleability(book.saleability)}}</dd>
 
+          <span data-ng-show="isBookForSale(book.saleability)">
+            <dt>Price:</dt>
+            <dd>{{book.listPrice | currency}}</dd>
+          </span>
         </dl>
       </div>
     </div>
