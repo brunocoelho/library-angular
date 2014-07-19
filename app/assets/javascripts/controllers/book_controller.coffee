@@ -1,4 +1,4 @@
-@BookCtrl = ($location, $rootScope, $scope, BookService, BookShareService, FilterBookService, LoadingService, LocalStorageService) ->
+@BookCtrl = ($location, $rootScope, $scope, BookService, BookShareService, LoadingService, LocalStorageService) ->
 
   BOOKS_PER_PAGE = 40
   DEFAULT_IMAGE_URL = 'assets/default-book.jpg'
@@ -23,7 +23,7 @@
       label
 
   $scope.getAuthors = (authors) ->
-    return if authors is undefined
+    return if authors is null
 
     if authors.length > 1
       authors[0] + '...'
@@ -54,7 +54,6 @@
     window.scrollTo(0, 0)
 
   $scope.$on 'books', (event, books) ->
-    books = FilterBookService.filter(books)
     $scope.books = books
     BookShareService.books = books
     LoadingService.setLoading false
@@ -68,4 +67,4 @@
       query = LocalStorageService.getQuery()
       fetchBooks(0, query)
 
-@BookCtrl.$inject = ['$location', '$rootScope', '$scope', 'BookService', 'BookShareService', 'FilterBookService', 'LoadingService', 'LocalStorageService']
+@BookCtrl.$inject = ['$location', '$rootScope', '$scope', 'BookService', 'BookShareService', 'LoadingService', 'LocalStorageService']
